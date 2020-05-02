@@ -1,0 +1,30 @@
+{
+  "name": "modava/tiny",
+  "description": "TinyMCE Modava",
+  "type": "Yii2-extension",
+  "keywords": [
+    "modava",
+    "tinymce"
+  ],
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "2amigOS! Consulting Group",
+      "email": "hola@2amigos.us",
+      "homepage": "http://2amigos.us"
+    }
+  ],
+  "support": {
+    "wiki": "http://www.yiiframework.com/wiki/",
+    "source": "https://github.com/modava/tiny"
+  },
+  "require": {
+    "tinymce/tinymce": ">=5"
+  },
+  "autoload": {
+    "psr-4": {
+      "modava\\tiny\\": "src"
+    }
+  },
+  "minimum-stability": "dev"
+}
