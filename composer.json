@@ -19,7 +19,8 @@
     "source": "https://github.com/modava/tiny"
   },
   "require": {
-    "tinymce/tinymce": ">=5"
+    "tinymce/tinymce": ">=5",
+    "modava/auth": "@dev"
   },
   "autoload": {
     "psr-4": {

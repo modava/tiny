@@ -2,6 +2,7 @@
 
 namespace modava\tiny;
 
+use modava\tiny\components\FileManagerPermisstion;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\widgets\InputWidget;
@@ -68,11 +69,13 @@ class TinyMce extends InputWidget
         $this->clientOptionsFull['external_plugins']['filemanager'] = $insFile->baseUrl . '/filemanager/plugin.min.js';
         $this->clientOptionsFull['external_plugins']['responsivefilemanager'] = $insFile->baseUrl . '/tinymce/plugins/responsivefilemanager/plugin.min.js';
 
+
         $configPath = [
             'upload_dir' => '/uploads/filemanager/source/',
             'current_path' => '../../../../../../frontend/web/uploads/filemanager/source/',
             'thumbs_base_path' => '../../../../../../frontend/web/uploads/filemanager/thumbs/',
             'base_url' => \Yii::getAlias('@frontendUrl'),
+            'FileManagerPermisstion' => FileManagerPermisstion::setPermissionFileAccess()
         ];
         $this->clientOptionsFull['filemanager_access_key'] = urlencode(serialize($configPath));
 

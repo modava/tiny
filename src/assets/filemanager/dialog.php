@@ -3,6 +3,7 @@ $time = time();
 
 $config = include 'config/config.php';
 
+
 if (USE_ACCESS_KEYS == true){
 	if (!isset($_GET['akey'], $config['access_keys']) || empty($config['access_keys'])){
 		die('Access Denied!');
