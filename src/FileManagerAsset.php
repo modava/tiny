@@ -9,4 +9,8 @@ class FileManagerAsset extends AssetBundle
 
     public $js = [
     ];
+
+    public $publishOptions = [
+        'forceCopy'=>true,
+    ];
 }
