@@ -20,7 +20,6 @@
   },
   "require": {
     "tinymce/tinymce": ">=5",
-    "modava/auth": "@dev"
   },
   "autoload": {
     "psr-4": {
