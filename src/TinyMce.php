@@ -23,12 +23,6 @@ class TinyMce extends InputWidget
             '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
             '//www.tinymce.com/css/codepen.min.css'
         ],
-//        'external_filemanager_path' => "filemanager/",
-//        'filemanager_title' => "Responsive Filemanager",
-//        'external_plugins' => [
-//            "responsivefilemanager" => "../../tinymce/plugins/responsivefilemanager/plugin.min.js",
-//            "filemanager" => "../../filemanager/plugin.min.js"
-//        ]
     ];
 
     public $triggerSaveOnBeforeValidateForm = true;
@@ -52,8 +46,10 @@ class TinyMce extends InputWidget
     {
         $view = $this->getView();
 
-        $insFile = TinyMceAsset::register($view);
-        
+        TinyMceAsset::register($view);
+
+        $insFile = FileManagerAsset::register($view);
+
         $options = $this->setOptions($insFile);
 
 
