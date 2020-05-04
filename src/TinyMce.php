@@ -52,10 +52,8 @@ class TinyMce extends InputWidget
     {
         $view = $this->getView();
 
-        TinyMceAsset::register($view);
-
-        $insFile = FileManagerAsset::register($view);
-
+        $insFile = TinyMceAsset::register($view);
+        
         $options = $this->setOptions($insFile);
 
 
