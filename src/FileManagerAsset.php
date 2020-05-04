@@ -5,7 +5,7 @@ use yii\web\AssetBundle;
 
 class FileManagerAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/modava/tiny/assets';
+    public $sourcePath = '@modava/tiny/assets';
 
     public $js = [
     ];
