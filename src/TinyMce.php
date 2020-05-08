@@ -72,12 +72,12 @@ class TinyMce extends InputWidget
         $js = [];
         $id = $this->options['id'];
 
-        $this->clientOptions['selector'] = "#$id";
-        $options = $this->clientOptions;
-
         if ($this->type == 'content') {
             $this->clientOptionsFull['selector'] = "#$id";
             $options = $this->clientOptionsFull;
+        } else {
+            $this->clientOptions['selector'] = "#$id";
+            $options = $this->clientOptions;
         }
 
         $options = Json::encode($options);
