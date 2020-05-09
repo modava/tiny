@@ -7,10 +7,7 @@ class FileManagerAsset extends AssetBundle
 {
     public $sourcePath = '@modava/tiny/assets';
 
-    public $js = [
-    ];
-
-    public $publishOptions = [
-        'forceCopy'=>true,
+    public $depends = [
+        'modava\tiny\TinyMceAsset'
     ];
 }

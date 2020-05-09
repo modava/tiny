@@ -1,4 +1,5 @@
 <?php
+
 namespace modava\tiny;
 
 use yii\web\AssetBundle;
@@ -9,9 +10,5 @@ class TinyMceAsset extends AssetBundle
 
     public $js = [
         'tinymce.js'
-    ];
-
-    public $publishOptions = [
-        'forceCopy'=>true,
     ];
 }
