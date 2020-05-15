@@ -3,10 +3,8 @@
 
 namespace modava\tiny;
 
-
-use kartik\base\InputWidget;
+use yii\widgets\InputWidget;
 use modava\tiny\components\FileManagerPermisstion;
-use yii\base\Widget;
 use yii\helpers\Html;
 
 class FileManager extends InputWidget
