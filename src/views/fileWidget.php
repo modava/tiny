@@ -67,7 +67,7 @@ $this->registerCSs('
     opacity: 1;
 }
 ');
-
+$img = $path.$image;
 ?>
     <section class="hk-sec-wrapper"><label><?=$label; ?></label>
         <div class="row">
@@ -76,14 +76,14 @@ $this->registerCSs('
                 <div class="img-select-content<?= $image != null ? ' has-img' : '' ?>">
                     <div class="img-select" data-toggle="modal" data-target="#file-manager">
                         <?php if ($image == null || $image == '') {
-                            $image = NOIMAGE;
+                            $img = $path.NOIMAGE;
                             ?>
-                            <img class="image-modal img-show" src="<?= $image ?>">
+                            <img class="image-modal img-show" src="<?= $img ?>">
                             <?php
                         } else {
                             ?>
                             <img class="image-modal img-show"
-                                 src="<?= $image ?>">
+                                 src="<?= $img ?>">
                             <?php
                         }
                         ?>
@@ -121,7 +121,7 @@ $this->registerCSs('
 
 <?php
 $frontendUrl = Yii::getAlias('@frontendUrl');
-$noimg = NOIMAGE;
+$noimg = $path.NOIMAGE;
 
 $js = <<< JS
 function responsive_filemanager_callback(field_id){
