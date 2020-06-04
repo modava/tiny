@@ -11,6 +11,7 @@ class FileManager extends InputWidget
 {
     public $model;
     public $attribute;
+    public $path;
     public $options = [];
     public $label;
 
@@ -40,7 +41,7 @@ class FileManager extends InputWidget
             'link' => $link,
             'filemanager_access_key' => $filemanager_access_key,
             'idName' => $this->options['id'],
-            'image' => $this->model[$this->attribute],
+            'image' => $this->path,
             'label' => $this->label,
         ]);
     }
