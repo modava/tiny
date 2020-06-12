@@ -31,8 +31,6 @@ class FileManager extends InputWidget
 
         $configPath = [
             'upload_dir' => '/uploads/filemanager/source/',
-            'current_path' => \Yii::getAlias('@frontend') . '/web/uploads/filemanager/source/',
-            'thumbs_base_path' => \Yii::getAlias('@frontend') . '/web/uploads/filemanager/thumbs/',
             'base_url' => \Yii::getAlias('@frontendUrl'),
             'FileManagerPermisstion' => FileManagerPermisstion::setPermissionFileAccess()
         ];
