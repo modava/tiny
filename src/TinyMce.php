@@ -10,6 +10,7 @@ use yii\widgets\InputWidget;
 class TinyMce extends InputWidget
 {
     public $type = 'desc';
+    public $source = null;
 
     private $clientOptions = [
 
@@ -34,6 +35,9 @@ class TinyMce extends InputWidget
             echo Html::activeTextarea($this->model, $this->attribute, $this->options);
         } else {
             echo Html::textarea($this->name, $this->value, $this->options);
+        }
+        if ($this->source == null) {
+            $this->source = \Yii::getAlias('@frontendUrl');
         }
         $this->registerClientScript();
     }
@@ -62,7 +66,7 @@ class TinyMce extends InputWidget
 
         $configPath = [
             'upload_dir' => '/uploads/filemanager/source/',
-            'base_url' => \Yii::getAlias('@frontendUrl'),
+            'base_url' => $this->source,
             'FileManagerPermisstion' => FileManagerPermisstion::setPermissionFileAccess()
         ];
         $this->clientOptionsFull['filemanager_access_key'] = urlencode(serialize($configPath));

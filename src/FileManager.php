@@ -15,12 +15,18 @@ class FileManager extends InputWidget
     public $options = [];
     public $label;
 
+    public $source = null;
+
     public function run()
     {
         if ($this->hasModel()) {
             echo Html::activeHiddenInput($this->model, $this->attribute, $this->options);
         } else {
             echo Html::hiddenInput($this->name, $this->value, $this->options);
+        }
+
+        if ($this->source == null) {
+            $this->source = \Yii::getAlias('@frontendUrl');
         }
 
         $view = $this->getView();
@@ -31,7 +37,7 @@ class FileManager extends InputWidget
 
         $configPath = [
             'upload_dir' => '/uploads/filemanager/source/',
-            'base_url' => \Yii::getAlias('@frontendUrl'),
+            'base_url' => $this->source,
             'FileManagerPermisstion' => FileManagerPermisstion::setPermissionFileAccess()
         ];
         $filemanager_access_key = urlencode(serialize($configPath));
