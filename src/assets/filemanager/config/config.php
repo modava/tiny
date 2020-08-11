@@ -98,7 +98,7 @@ $config = array(
     | with final /
     |
     */
-    'current_path' => '../../../../../../frontend/web/uploads/filemanager/source/',
+    'current_path' => $uploadPath['upload_path'] . '/uploads/filemanager/source/',
 
     /*
     |--------------------------------------------------------------------------
@@ -109,7 +109,7 @@ $config = array(
     | DO NOT put inside upload folder
     |
     */
-    'thumbs_base_path' => '../../../../../../frontend/web/uploads/filemanager/thumbs/',
+    'thumbs_base_path' => $uploadPath['upload_path'] . '/uploads/filemanager/thumbs/',
 
     /*
     |--------------------------------------------------------------------------
