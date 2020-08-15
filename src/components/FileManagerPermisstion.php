@@ -9,7 +9,9 @@ class FileManagerPermisstion
     {
         if (!\Yii::$app->user->isGuest) {
             $UserName = \Yii::$app->user->identity->username;
-
+            if (session_id() == '') {
+                session_start();
+            }
             if (empty($_SESSION['userId'])) {
                 $_SESSION['userId'] = $UserName;
             }
