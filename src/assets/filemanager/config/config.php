@@ -18,9 +18,8 @@ ob_start('mb_output_handler');
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 setlocale(LC_CTYPE, 'en_US'); //correct transliteration
 
-
-if (isset($_GET['akey'])) {
-    $_SESSION['uploadPath'] = $_GET['akey'];
+if (isset($_GET['config'])) {
+    $_SESSION['uploadPath'] = $_GET['config'];
 }
 $uploadPath = unserialize(urldecode($_SESSION['uploadPath']));
 
@@ -44,7 +43,7 @@ $akey = md5($_SESSION['userId'] . 'dsDlFWR9M2xQV');
 |
 */
 
-define('USE_ACCESS_KEYS', false); // TRUE or FALSE
+define('USE_ACCESS_KEYS', true); // TRUE or FALSE
 
 /*
 |--------------------------------------------------------------------------
@@ -200,7 +199,7 @@ $config = array(
     |
     */
 
-    'access_keys' => array($uploadPath['FileManagerPermisstion'], $akey),
+    'access_keys' => array('0241d23d536d9d30e76eddc8af020271', $akey),
 
     //--------------------------------------------------------------------------------------------------------
     // YOU CAN COPY AND CHANGE THESE VARIABLES INTO FOLDERS config.php FILES TO CUSTOMIZE EACH FOLDER OPTIONS

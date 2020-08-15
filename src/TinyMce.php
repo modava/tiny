@@ -14,9 +14,7 @@ class TinyMce extends InputWidget
 
     private $upload_path;
 
-    private $clientOptions = [
-
-    ];
+    private $clientOptions = [];
 
     private $clientOptionsFull = [
         'plugins' => [
@@ -66,15 +64,19 @@ class TinyMce extends InputWidget
         $this->clientOptionsFull['filemanager_title'] = 'Responsive Filemanager';
         $this->clientOptionsFull['external_plugins']['filemanager'] = $insFile->baseUrl . '/filemanager/plugin.min.js';
         $this->clientOptionsFull['external_plugins']['responsivefilemanager'] = $insFile->baseUrl . '/tinymce/plugins/responsivefilemanager/plugin.min.js';
+        $this->clientOptionsFull['filemanager_access_key'] = FileManagerPermisstion::setPermissionFileAccess();
 
+        $this->clientOptionsFull['upload_dir'] = '/uploads/filemanager/source/';
 
         $configPath = [
             'upload_dir' => '/uploads/filemanager/source/',
             'base_url' => \Yii::getAlias('@frontendUrl'),
             'upload_path' => $this->upload_path,
-            'FileManagerPermisstion' => FileManagerPermisstion::setPermissionFileAccess()
         ];
-        $this->clientOptionsFull['filemanager_access_key'] = urlencode(serialize($configPath));
+
+        if (empty($_SESSION['uploadPath'])) {
+            $_SESSION['uploadPath'] = urlencode(serialize($configPath));
+        }
 
         $js = [];
         $id = $this->options['id'];

@@ -9,13 +9,11 @@ class FileManagerPermisstion
     {
         if (!\Yii::$app->user->isGuest) {
             $UserName = \Yii::$app->user->identity->username;
-            if (session_id() == '') {
-                session_start();
-            }
-            if (empty($_SESSION['userId'])) {
-                $_SESSION['userId'] = $UserName;
-            }
-            return md5($UserName . 'dsDlFWR9M2xQV');
+
+            $akey = md5($UserName . 'dsDlFWR9M2xQV');
+
+            \Yii::$app->session->set('userId', $UserName);
+            return $akey;
         }
     }
 
