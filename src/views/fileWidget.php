@@ -105,7 +105,7 @@ $img = $path.$image;
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <iframe src="<?= $link; ?>/dialog.php?type=2&field_id=<?= $idName; ?>&lang=vi&akey=<?= $filemanager_access_key; ?>"
+                                <iframe src="<?= $link; ?>/dialog.php?type=2&field_id=<?= $idName; ?>&lang=vi&akey=<?= $filemanager_access_key; ?>&config=<?=$config; ?>"
                                         style="width: 100%; height: 900px;"></iframe>
                             </div>
                             <div class="modal-footer">

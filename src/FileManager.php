@@ -43,9 +43,9 @@ class FileManager extends InputWidget
             'upload_dir' => '/uploads/filemanager/source/',
             'base_url' => \Yii::getAlias('@frontendUrl'),
             'upload_path' => $this->upload_path,
-            'FileManagerPermisstion' => FileManagerPermisstion::setPermissionFileAccess()
         ];
-        $filemanager_access_key = urlencode(serialize($configPath));
+        $config = urlencode(serialize($configPath));
+        $filemanager_access_key = FileManagerPermisstion::setPermissionFileAccess();
         return $this->render('fileWidget', [
             'link' => $link,
             'filemanager_access_key' => $filemanager_access_key,
@@ -53,6 +53,7 @@ class FileManager extends InputWidget
             'path' => $this->path,
             'image' => $this->model[$this->attribute],
             'label' => $this->label,
+            'config' => $config,
         ]);
     }
 }
