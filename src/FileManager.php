@@ -15,8 +15,6 @@ class FileManager extends InputWidget
     public $options = [];
     public $label;
 
-    public $source = true;
-
     private $upload_path;
 
     public function run()
@@ -27,7 +25,7 @@ class FileManager extends InputWidget
             echo Html::hiddenInput($this->name, $this->value, $this->options);
         }
 
-        if ($this->source) {
+        if (UPLOAD_PATH === 'frontend') {
             $this->upload_path = '../../../../../../frontend/web';
         } else {
             $this->upload_path = '../../../../../../backend/web';
@@ -41,6 +39,8 @@ class FileManager extends InputWidget
 
         $configPath = [
             'upload_dir' => '/uploads/filemanager/source/',
+            'current_path' => $this->upload_path . '/uploads/filemanager/source/',
+            'thumbs_base_path' => $this->upload_path . '/uploads/filemanager/thumbs/',
             'base_url' => \Yii::getAlias('@frontendUrl'),
             'upload_path' => $this->upload_path,
         ];

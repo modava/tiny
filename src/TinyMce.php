@@ -10,7 +10,6 @@ use yii\widgets\InputWidget;
 class TinyMce extends InputWidget
 {
     public $type = 'desc';
-    public $source = true;
 
     private $upload_path;
 
@@ -36,7 +35,7 @@ class TinyMce extends InputWidget
         } else {
             echo Html::textarea($this->name, $this->value, $this->options);
         }
-        if ($this->source) {
+        if (UPLOAD_PATH === 'frontend') {
             $this->upload_path = '../../../../../../frontend/web';
         } else {
             $this->upload_path = '../../../../../../backend/web';
@@ -70,6 +69,8 @@ class TinyMce extends InputWidget
 
         $configPath = [
             'upload_dir' => '/uploads/filemanager/source/',
+            'current_path' => $this->upload_path . '/uploads/filemanager/source/',
+            'thumbs_base_path' => $this->upload_path . '/uploads/filemanager/thumbs/',
             'base_url' => \Yii::getAlias('@frontendUrl'),
             'upload_path' => $this->upload_path,
         ];
