@@ -15,11 +15,11 @@ class TinyMce extends InputWidget {
     ];
 
     private $clientOptionsFull = [
-        'plugins'      => [
+        'plugins'     => [
             "code print preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern help"
         ],
-        'toolbar'      => "undo redo | formatselect | bold italic strikethrough forecolor backcolor | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | link image | fullscreen code",
-        'content_css'  => [
+        'toolbar'     => "undo redo | formatselect | bold italic strikethrough forecolor backcolor | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | link image | fullscreen code",
+        'content_css' => [
             '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
             '//www.tinymce.com/css/codepen.min.css'
         ],
@@ -65,14 +65,17 @@ class TinyMce extends InputWidget {
         $this->clientOptionsFull['external_plugins']['responsivefilemanager'] = $insFile->baseUrl . '/tinymce/plugins/responsivefilemanager/plugin.min.js';
 
 
-        $configPath                                        = [
+        $configPath             = [
             'upload_dir'             => '/img/',
             'current_path'           => '../../../../../../frontend/web/img/',
             'thumbs_base_path'       => '../../../../../../frontend/web/thumbs/',
             'base_url'               => \Yii::getAlias( '@frontendUrl' ),
-            'FileManagerPermisstion' => FileManagerPermisstion::setPermissionFileAccess(),
+            'upload_path'            => '../../../../../../frontend/web',
         ];
-        $this->clientOptionsFull['filemanager_access_key'] = urlencode( serialize( $configPath ) );
+        $config                 = urlencode( serialize( $configPath ) );
+        $filemanager_access_key = FileManagerPermisstion::setPermissionFileAccess();
+
+        $this->clientOptionsFull['filemanager_access_key'] = $filemanager_access_key . '&config=' . $config;
 
         $id = $this->options['id'];
 
@@ -83,7 +86,6 @@ class TinyMce extends InputWidget {
             $this->clientOptionsFull['selector'] = "#$id";
             $this->custom_options                = $this->clientOptionsFull;
         }
-
         return $this->custom_options;
 
     }
@@ -94,13 +96,12 @@ class TinyMce extends InputWidget {
 
         $custom_options = $this->getCustomOptions();
 
-        $options        = Json::encode( $custom_options );
+        $options = Json::encode( $custom_options );
 
         $js[] = "tinymce.init($options);";
         if ( $this->triggerSaveOnBeforeValidateForm ) {
             $js[] = "$('#{$this->options['id']}').parents('form').on('beforeValidate', function() { tinymce.triggerSave(); });";
         }
-
         return $js;
     }
 
