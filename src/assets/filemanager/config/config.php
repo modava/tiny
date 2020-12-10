@@ -147,7 +147,7 @@ $config = array(
     'ftp_user' => "user",
     'ftp_pass' => "pass",
     'ftp_base_folder' => "base_folder",
-    'ftp_base_url' => "http://site to ftp root",
+    'ftp_base_url' => "",
     // Directory where place files before to send to FTP with final /
     'ftp_temp_folder' => "../temp/",
     /*
