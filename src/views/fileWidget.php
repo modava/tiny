@@ -94,7 +94,7 @@ $img = $path.$image;
                 </div>
 
                 <!-- Modal -->
-                <div class="modal fade" id="file-manager" tabindex="-1" role="dialog"
+                <div class="modal" id="file-manager" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLarge01" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
